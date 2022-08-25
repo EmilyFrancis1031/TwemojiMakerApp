@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Dimensions, View,ScrollView, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native';
 import SVG from 'react-native-svg'
-import {NeutralLeftEye, PensiveLeftEye} from './leftEyes/leftEyeComps'
+import { NeutralFace, AnxiousFace, ClownFace } from '../bases/baseComps';
 
-export default function LeftEyeRadioButtons({ data, onSelect, initActive }) {
+export default function BaseRadioButtons({ data, onSelect, initActive }) {
   const [userOption, setUserOption] = useState(initActive);
   const selectHandler = (value) => {
     onSelect(value);
@@ -12,18 +12,20 @@ export default function LeftEyeRadioButtons({ data, onSelect, initActive }) {
   const getNewEditableEmojiComponent = (compKey, color1=null, color2=null,color3=null, color4=null, color5=null, scale=1, x=0, y=0, rot=0) => {
     var newComponent = null;
     switch (compKey) {
-      case 'neutral-left-eye': newComponent = <NeutralLeftEye type='left-eye' key='neutral-left-eye' scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+      case 'neutral-face': newComponent = <NeutralFace type='base' key='neutral-face' scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
-      case 'pensive-left-eye': newComponent = <PensiveLeftEye type='left-eye' key='pensive-left-eye' scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+      case 'anxious-face': newComponent = <AnxiousFace type='base' key='anxious-face' scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+        break;
+      case 'clown-face': newComponent = <ClownFace type='base' key='clown-face' scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+        break;
+      case 'angry-horns-face': newComponent = <AngryHornsFace type='base' key='angry-horns-face' color1={color1} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
       default:  newComponent = null;
-
    }
-
    return newComponent
   }
   return (
-    <ScrollView horizontal={true} style={{flexDirection:'row'}}>
+    <ScrollView horizontal={true}style={{flexDirection:'row'}}>
       {data.map((item) => {
         return (
           <TouchableOpacity key={item.value}
@@ -41,7 +43,7 @@ export default function LeftEyeRadioButtons({ data, onSelect, initActive }) {
 
 const styles = StyleSheet.create({
         unselected: {
-      borderColor: 'white',
+      borderColor: 'transparent',
       borderWidth: 2,
       margin: 5,
       padding: 10,

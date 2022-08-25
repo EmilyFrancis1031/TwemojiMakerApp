@@ -1,23 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
-import { NeutralFace, AnxiousFace } from './components/bases/baseComps';
-import SVG, {G} from 'react-native-svg'
-import Slider from '@react-native-community/slider'
-import BaseRadioButtons from './components/baseRadioButtons';
-import LeftEyeRadioButtons from './components/leftEyeRadioButtons';
-import getNewEmojiComponent from './scripts/getNewEmojiComponent';
-import ComponentSelectors from './components/componentSelectors';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import BaseRadioButtons from './components/componentRadioButtons/baseRadioButtons';
+import LeftEyeRadioButtons from './components/componentRadioButtons/leftEyeRadioButtons';
+import ComponentSelectors from './components/componentRadioButtons/componentSelectors';
+import ComponentEditors from './components/componentEditors';
+import Emoji from './components/emojiComponent';
 
 
 export default function App() {
 
-  var [activeElementAttributes, setActiveElementAttributes] = useState({scale: '1', rotation: '0', x: '0', y: '0', h: '0', s: '0', l: '0'})
-  var [emojiComponentStrings, setEmojiComponentStrings] = useState({base: null, lefteye: null, righteye: null, lefteyebrow: null, righteyebrow: null, nose: null, mouth: null})
-  var [activeComponentType, setActiveComponentType] = useState('base')
-  
-  var [baseComp, setBaseComp] = useState(getNewEmojiComponent('neutral-face', activeElementAttributes))
-  var [leftEyeComp, setLeftEyeComp] = useState(null)
+  var [emojiComps, setEmojiComps] = useState( 
+    {base: {
+        key:'neutral-face',
+        attr: {
+          scale: 1, rotation: 0,
+          x: 0, y: 0, h: 0, s: 0, l: 0, 
+        }
+      },
+    lefteye: {
+      key: 'neutral-left-eye',
+      attr: {
+        scale: 1, rotation: 0,
+        x: 0, y: 0, h: 0, s: 0, l: 0, 
+      }
+    }})
+  var changeValues = false
+  var [emoji, setEmoji] = useState(<Emoji emojiComps={emojiComps}/>)
   
   const comps = {
     base: [
@@ -32,7 +41,6 @@ export default function App() {
 
   }
   var compTypes = ['base','lefteye']
-
   const componentSelectors = [
     { value: 'base' },
     { value: 'lefteye' },
@@ -42,58 +50,27 @@ export default function App() {
     { value: 'nose' },
     { value: 'mouth' },
   ];
-  var compRadioButtons = [<BaseRadioButtons  initActive={emojiComponentStrings['base']} data={comps['base']} onSelect={(value) => {setNewEmojiComponentString(0,value), setNewEmojiComponent(value)}} />,
-                          <LeftEyeRadioButtons initActive={emojiComponentStrings['lefteye']} data={comps['lefteye']} onSelect={(value) => {setNewEmojiComponentString(1, value),  setNewEmojiComponent(value)}} />
+  var compRadioButtons = [<BaseRadioButtons  initActive={emojiComps.base.key} data={comps['base']} onSelect={(value) => {emojiComps.base.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
+                          <LeftEyeRadioButtons initActive={emojiComps.lefteye.key} data={comps['lefteye']} onSelect={(value) => {emojiComps.lefteye.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />
                         ]
-  const setNewActiveElementAttribute = (attrName, newValue) => {
-    var tempActiveElementAttributes = activeElementAttributes;
-    tempActiveElementAttributes[attrName] = newValue.toString();
-    setActiveElementAttributes(tempActiveElementAttributes);
-  }
-
-  const setNewEmojiComponentString = (i, newComponent) => {
-    var tempEmojiComponentStrings = emojiComponentStrings;
-    tempEmojiComponentStrings[activeComponentType] = newComponent;
-    setEmojiComponentStrings(tempEmojiComponentStrings)
-  }
-
-  const setNewEmojiComponent = (newComponentString) => {
-    switch(activeComponentType){
-      case 'base': setBaseComp(getNewEmojiComponent(newComponentString, activeElementAttributes))
-        break;
-      case 'lefteye': setLeftEyeComp(getNewEmojiComponent(newComponentString, activeElementAttributes))
-        break;  
-    }
-  }
-
-
+  var [activeComponentType, setActiveComponentType] = useState('base')
+  
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+
       <View style={styles.emojiViewContainer}>
-        <View style={styles.emojiView}>
-          <SVG height='156' width='156' viewBox='0 0 36 36'>
-            {baseComp}
-            {leftEyeComp}
-            
-        
-          </SVG>
-        </View>
+        {emoji}
       </View>
 
-    <View style={{width:Dimensions.get('window').width, height: Dimensions.get('window').height*0.1}}>
-    <ComponentSelectors initActive={'base'} data={componentSelectors} onSelect={(value) => setActiveComponentType(value)} />
+      <ComponentSelectors initActive={'base'} data={componentSelectors} onSelect={(value) => {setActiveComponentType(value)}} />
 
-    </View>
-    
-      <View style={styles.emojiEditorsContainer}>
-      </View>
+      <ComponentEditors activeCompType={activeComponentType} emojiComps={emojiComps} setEmoji={setEmoji} setEmojiComps={setEmojiComps}/>
 
       <View style={styles.emojiComponentsContainer}>
         {compRadioButtons[compTypes.indexOf(activeComponentType)]}
-
       </View>
-     
+
     </View>
   );
 }
@@ -102,43 +79,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
   },
   emojiViewContainer:{
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height*0.25,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: Dimensions.get('window').height*0.05
-  },
-  emojiView: {
-    width: Dimensions.get('window').height*0.2,
-    height: Dimensions.get('window').height*0.2,
-    backgroundColor: '#fff',
-    elevation: 10,
-    shadowColor: '#171717',
-    shadowOpacity: 0.2,
-    shadowRadius: 15,
-  },
-  emojiEditorsContainer:{
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height*0.35,
-    backgroundColor: '#ddd'
-    
+    marginTop: Dimensions.get('window').height*0.05,
   },
   emojiComponentsContainer:{
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height*0.25,
-    backgroundColor: '#fff'
-  },
-
-  emojiComponentsSelectorsContainer:{
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height*0.07,
-    backgroundColor: 'red'
-  },
-  emojiComponentsSelectorsScrollView:{
-    flexDirection: 'row'
-  },
-
+  }
 });

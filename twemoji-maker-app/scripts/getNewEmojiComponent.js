@@ -3,15 +3,15 @@ import * as LeftEyeComponents from '../components/leftEyes/leftEyeComps'
 
 export default function getNewEmojiComponent(compName, compProps){
     var newComponent = null;
-    var scale = compProps['scale']
-    var rot = compProps['rotation']
-    var x = compProps['x']
-    var y = compProps['y']
-    var color1 = compProps['color1']
-    var color2 = compProps['color2']
-    var color3 = compProps['color3']
-    var color4 = compProps['color4']
-    var color5 = compProps['color5']
+    var scale = compProps['scale'] ?? null
+    var rot = compProps['rotation'] ?? null
+    var x = compProps['x'] ?? null
+    var y = compProps['y'] ?? null
+    var color1 = compProps['color1'] ?? null
+    var color2 = compProps['color2'] ?? null
+    var color3 = compProps['color3'] ?? null
+    var color4 = compProps['color4'] ?? null
+    var color5 = compProps['color5'] ?? null
     switch (compName) {
       case 'neutral-face': newComponent = <BaseComponents.NeutralFace type='base' key='neutral-face' color1={color1} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
@@ -25,10 +25,7 @@ export default function getNewEmojiComponent(compName, compProps){
         break;
       case 'pensive-left-eye': newComponent = <LeftEyeComponents.PensiveLeftEye type='left-eye' key='pensive-left-eye' color1={color1} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
-      case 'neutral-right-eye': newComponent = <LeftEyeComponents.NeutralRightEye type='right-eye' key='neutral-right-eye' color1={color1} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
-        break;
       default:  newComponent = null;
    }
-   console.log('got new component: ', compName)
    return newComponent
 }

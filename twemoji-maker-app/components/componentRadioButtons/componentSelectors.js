@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dimensions, View, ScrollView, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native';
 import SVG, {G, Path, Ellipse} from 'react-native-svg'
-import { NeutralFace } from './bases/baseComps';
+import { NeutralFace } from '../bases/baseComps';
 
 
 export default function ComponentSelectors({ data, onSelect, initActive }) {
@@ -58,43 +58,50 @@ export default function ComponentSelectors({ data, onSelect, initActive }) {
    return newComponent
   }
   return (
-    <ScrollView horizontal={true} style={{flexDirection:'row', width: Dimensions.get('window').width}}>
-      {data.map((item) => {
-        return (
-          <TouchableOpacity key={item.value}
-            style={item.value === userOption ? styles.selected : styles.unselected}
-            onPress={() => selectHandler(item.value)}>
-            <SVG height='40' width='40' viewBox='0 0 36 36'>{getNewEditableEmojiComponent(item.value)}</SVG>
-            
-          </TouchableOpacity>
-        );
-      })}
-    </ScrollView>
+    <View style={styles.emojiComponentsSelectorsContainer}>
+      <ScrollView horizontal={true} style={{flexDirection:'row', width: Dimensions.get('window').width}}>
+        {data.map((item) => {
+          return (
+            <TouchableOpacity key={item.value}
+              style={item.value === userOption ? styles.selected : styles.unselected}
+              onPress={() => selectHandler(item.value)}>
+              <SVG height='40' width='40' viewBox='0 0 36 36'>{getNewEditableEmojiComponent(item.value)}</SVG>
+            </TouchableOpacity>
+          );
+        })}
+      </ScrollView>
+    </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
-   
-    unselected: {
-        borderColor: 'white',
-        borderWidth: 2,
-        margin: 5,
-        padding: 10,
-        borderRadius: 10,
-        width: Dimensions.get('window').height*0.075,
-    height: Dimensions.get('window').height*0.075,
-    justifyContent: 'center',
+  emojiComponentsSelectorsContainer:{
+    width:Dimensions.get('window').width,
+    height: Dimensions.get('window').height*0.1,
+    borderTopColor: '#a88be8',
+    borderTopWidth: 3
+  },
+  unselected: {
+      borderColor: 'transparent',
+      borderWidth: 2,
+      margin: 5,
+      padding: 10,
+      borderRadius: 10,
+      width: Dimensions.get('window').height*0.075,
+      height: Dimensions.get('window').height*0.075,
+      justifyContent: 'center',
       alignItems: 'center'
-      },
-    selected: {
-        borderColor: 'cornflowerblue',
-        borderWidth: 2,
-        margin: 5,
-        padding: 10,
-        borderRadius: 10,
-        width: Dimensions.get('window').height*0.075,
-    height: Dimensions.get('window').height*0.075,
-    justifyContent: 'center',
+    },
+  selected: {
+      borderColor: 'cornflowerblue',
+      borderWidth: 2,
+      margin: 5,
+      padding: 10,
+      borderRadius: 10,
+      width: Dimensions.get('window').height*0.075,
+      height: Dimensions.get('window').height*0.075,
+      justifyContent: 'center',
       alignItems: 'center'
-      },
+    },
   });
