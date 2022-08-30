@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dimensions, View,ScrollView, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native';
 import SVG from 'react-native-svg'
-import { NeutralFace, AnxiousFace, ClownFace } from '../bases/baseComps';
+import { NeutralFace, AnxiousFace, ClownFace, AngryHornsFace } from '../bases/baseComps';
 
 export default function BaseRadioButtons({ data, onSelect, initActive }) {
   const [userOption, setUserOption] = useState(initActive);

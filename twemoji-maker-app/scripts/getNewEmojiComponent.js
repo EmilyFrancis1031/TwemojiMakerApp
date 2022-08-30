@@ -3,15 +3,14 @@ import * as LeftEyeComponents from '../components/leftEyes/leftEyeComps'
 
 export default function getNewEmojiComponent(compName, compProps){
     var newComponent = null;
-    var scale = compProps['scale'] ?? null
-    var rot = compProps['rotation'] ?? null
-    var x = compProps['x'] ?? null
-    var y = compProps['y'] ?? null
-    var color1 = compProps['color1'] ?? null
-    var color2 = compProps['color2'] ?? null
-    var color3 = compProps['color3'] ?? null
-    var color4 = compProps['color4'] ?? null
-    var color5 = compProps['color5'] ?? null
+    var scale = compProps['scale'] ?? '1'
+    var rot = compProps['rotation'] ?? '0'
+    var x = compProps['x'] ?? '0'
+    var y = compProps['y'] ?? '0'
+    var h = compProps['h'] ?? null
+    var s = compProps['s'] ?? null
+    var l = compProps['l'] ?? null
+
     switch (compName) {
       case 'neutral-face': newComponent = <BaseComponents.NeutralFace type='base' key='neutral-face' color1={color1} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;

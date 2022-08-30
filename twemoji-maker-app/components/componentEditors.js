@@ -44,17 +44,6 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
     setEmojiComps(emojiComps)
   }, [rotation])
 
-    
-  console.log(activeCompType,
-              emojiComps[activeCompType].key.toString(),
-              emojiComps[activeCompType].attr.h.toString(),
-              emojiComps[activeCompType].attr.s.toString(),
-              emojiComps[activeCompType].attr.l.toString(),
-              emojiComps[activeCompType].attr.x.toString(),
-              emojiComps[activeCompType].attr.y.toString(),
-              emojiComps[activeCompType].attr.scale.toString(),
-              emojiComps[activeCompType].attr.rotation.toString())
-
   const onAttrChange = (attrName, newValue) => {
       
     var changedAttr = null
@@ -76,10 +65,10 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
       default: console.log('uhoh')
     }
 
-    console.log('before updating ', activeCompType.toString(), ' ', attrName,': ','x: ', emojiComps[activeCompType].attr.x.toString(), 'y: ', emojiComps[activeCompType].attr.y.toString())
+    //console.log('before updating ', activeCompType.toString(), ' ', attrName,': ','x: ', emojiComps[activeCompType].attr.x.toString(), 'y: ', emojiComps[activeCompType].attr.y.toString())
     //emojiComps[activeCompType].attr = {h: h, s: s, l: l, x: x, y: y, scale: scale, rotation: rotation}
     //emojiComps[activeCompType].attr[attrName] = newValue
-    console.log('after updating ', activeCompType.toString(), ' ', attrName, ': ','x: ', emojiComps[activeCompType].attr.x.toString(), 'y: ', emojiComps[activeCompType].attr.y.toString())
+    //console.log('after updating ', activeCompType.toString(), ' ', attrName, ': ','x: ', emojiComps[activeCompType].attr.x.toString(), 'y: ', emojiComps[activeCompType].attr.y.toString())
 
     //console.log('onAttrChange: ', emojiComps);
     

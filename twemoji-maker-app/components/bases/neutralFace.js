@@ -2,7 +2,10 @@ import * as React from "react";
 import Svg, { Path, G,} from 'react-native-svg';
 
 function NeutralFace(props){
-    var color1 = props.color1 ?? 'rgb(255,204,77)';
+    var h = props.h ?? '43'
+    var s = props.s ?? '100'
+    var l = props.l ?? '65'
+    var color1 = 'hsl('+h+','+s+'%,'+l+'%)'
 
     return (
         // Using react-natives built in components.

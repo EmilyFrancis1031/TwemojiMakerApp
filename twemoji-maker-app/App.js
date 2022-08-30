@@ -15,14 +15,14 @@ export default function App() {
         key:'neutral-face',
         attr: {
           scale: 1, rotation: 0,
-          x: 0, y: 0, h: 0, s: 0, l: 0, 
+          x: 0, y: 0, h: 43, s: 100, l: 65, 
         }
       },
     lefteye: {
       key: 'neutral-left-eye',
       attr: {
         scale: 1, rotation: 0,
-        x: 0, y: 0, h: 0, s: 0, l: 0, 
+        x: 0, y: 0, h: 41, s: 100, l: 20, 
       }
     }})
   var changeValues = false
