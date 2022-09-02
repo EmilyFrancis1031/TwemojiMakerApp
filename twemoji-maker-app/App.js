@@ -25,14 +25,16 @@ export default function App() {
         x: 0, y: 0, h: 41, s: 100, l: 20, 
       }
     }})
-  var changeValues = false
-  var [emoji, setEmoji] = useState(<Emoji emojiComps={emojiComps}/>)
+
+    var [emoji, setEmoji] = useState(<Emoji emojiComps={emojiComps}/>)
   
   const comps = {
     base: [
       { value: 'neutral-face' },
       { value: 'anxious-face' },
       { value: 'clown-face' },
+      { value: 'angry-horns-face' },
+
     ],
     lefteye: [
       { value: 'neutral-left-eye' },

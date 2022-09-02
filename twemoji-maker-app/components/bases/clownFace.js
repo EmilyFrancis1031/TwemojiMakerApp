@@ -3,6 +3,12 @@ import Svg, { Circle, Path, G,} from 'react-native-svg';
 
 function ClownFace(props){
     var color1 = props.color1 ?? 'rgb(66,137,193)';
+    var h = props.h ?? '206'
+    var s = props.s ?? '51'
+    var l = props.l ?? '51'
+    var color1 = 'hsl('+h+','+s+'%,'+l+'%)'
+
+
     var color2 = props.color2 ?? 'rgb(254,231,184)';
     
 

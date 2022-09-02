@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dimensions, View, Text, StyleSheet} from 'react-native';
+import { Dimensions, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Slider from '@react-native-community/slider';
 import Emoji from './emojiComponent';
 
@@ -87,6 +87,7 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={0}  maximumValue={359}  step={1}
                       onValueChange={(newValue) => {onAttrChange('h', newValue)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.h}</Text>
+              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
             </View>
 
             <View style={styles.editorContainer}>
@@ -96,6 +97,7 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={0}  maximumValue={100}  step={1}
                       onValueChange={(newValue) => {onAttrChange('s', newValue)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.s}</Text>
+              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
               
             </View>
 
@@ -106,6 +108,8 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={0}  maximumValue={100}  step={1}
                       onValueChange={(newValue) => {onAttrChange('l', newValue)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.l}</Text>
+              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
+            
             </View>
             
             <View style={styles.editorContainer}>
@@ -115,6 +119,7 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={-10}  maximumValue={10}  step={1}
                       onValueChange={(newValue) => {console.log(activeCompType, newValue), onAttrChange('x', newValue)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.x}</Text>
+              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
       
             </View>
             <View style={styles.editorContainer}>
@@ -124,6 +129,8 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={-10}  maximumValue={10}  step={1}
                       onValueChange={(newValue) => {onAttrChange('y', newValue)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.y}</Text>
+              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
+            
             </View>
 
             <View style={styles.editorContainer}>
@@ -133,6 +140,9 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={0.5}  maximumValue={2}  step={0.1}
                       onValueChange={(newValue) => {onAttrChange('scale', Math.round(newValue * 10) / 10)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.scale}</Text>
+              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
+            
+
             </View>
 
             <View style={styles.editorContainer}>
@@ -142,6 +152,8 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={-180}  maximumValue={180}  step={1}
                       onValueChange={(newValue) => {onAttrChange('rotation', newValue)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.rotation}</Text>
+              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
+            
             </View>
 
           </View>
@@ -152,26 +164,37 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
 const styles = StyleSheet.create({
         
     colorSlider: {
-        width: Dimensions.get('window').width*0.6,
+        width: Dimensions.get('window').width*0.5,
         height: Dimensions.get('window').height*0.035
     },
     editorContainer: {
-      flexDirection: 'row'
+      flexDirection: 'row',
+      height: Dimensions.get('window').width*0.085
     },
     editorsContainer: {
       alignItems: 'center',
-      borderTopColor: '#3ab52f',
-      borderTopWidth: 1,
+      borderTopColor: 'rgba(106,108,110, 0.3)',
+      borderTopWidth: 2,
       paddingTop: 10
     },
     editorText: {
       width: Dimensions.get('window').width*0.2,
       textAlign: 'right',
-      color: '#555'
+      paddingRight: 5,
+      color: 'rgba(106,108,110, 0.95)',
+      fontSize: 14
     },
     editorValueText: {
-      width: Dimensions.get('window').width*0.15,
+      width: Dimensions.get('window').width*0.1,
       textAlign: 'left',
-      color: '#555'
+      paddingLeft: 5,
+      color: 'rgba(106,108,110, 0.95)',
+      fontSize: 14
+    },
+    resetEditor:{
+      width: Dimensions.get('window').width*.075,
+      height: Dimensions.get('window').width*.075,
+      backgroundColor: 'rgba(106,108,110, 0.95)',
+      borderRadius: 10
     }
   });

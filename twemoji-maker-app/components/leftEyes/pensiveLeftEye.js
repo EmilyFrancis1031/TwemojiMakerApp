@@ -2,7 +2,10 @@ import * as React from "react";
 import Svg, { Path, G,} from 'react-native-svg';
 
 function PensiveLeftEye(props){
-    var color1 = props.color1 ?? 'rgb(102,69,0)';
+    var h = props.h ?? '41'
+    var s = props.s ?? '100'
+    var l = props.l ?? '20'
+    var color1 = 'hsl('+h+','+s+'%,'+l+'%)'
 
 return (
 	// Using react-natives built in components.

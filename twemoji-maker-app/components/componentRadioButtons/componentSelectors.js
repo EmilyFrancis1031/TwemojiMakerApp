@@ -79,8 +79,9 @@ const styles = StyleSheet.create({
   emojiComponentsSelectorsContainer:{
     width:Dimensions.get('window').width,
     height: Dimensions.get('window').height*0.1,
-    borderTopColor: '#a88be8',
-    borderTopWidth: 3
+    borderTopColor: 'rgba(106,108,110, 0.3)',
+    borderTopWidth: 2,
+    paddingTop: 5
   },
   unselected: {
       borderColor: 'transparent',
