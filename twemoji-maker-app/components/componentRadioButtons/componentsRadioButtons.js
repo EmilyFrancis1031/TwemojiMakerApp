@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dimensions, View,ScrollView, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native';
+import { Dimensions, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import SVG from 'react-native-svg'
 import getNewEmojiComponent from '../../scripts/getNewEmojiComponent';
 

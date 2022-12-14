@@ -80,38 +80,7 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
 
   return (
           <View style={styles.editorsContainer}>
-            <View style={styles.editorContainer}>
-              <Text style={styles.editorText}>Hue</Text>
-              <Slider style={styles.colorSlider} 
-                      value={emojiComps[activeCompType].attr.h}
-                      minimumValue={0}  maximumValue={359}  step={1}
-                      onValueChange={(newValue) => {onAttrChange('h', newValue)}}/>
-              <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.h}</Text>
-              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
-            </View>
-
-            <View style={styles.editorContainer}>
-              <Text style={styles.editorText}>Saturation</Text>
-              <Slider style={styles.colorSlider}
-                      value={s}
-                      minimumValue={0}  maximumValue={100}  step={1}
-                      onValueChange={(newValue) => {onAttrChange('s', newValue)}}/>
-              <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.s}</Text>
-              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
-              
-            </View>
-
-            <View style={styles.editorContainer}>
-              <Text style={styles.editorText}>Lightness</Text>
-              <Slider style={styles.colorSlider}
-                      value={emojiComps[activeCompType].attr.l}
-                      minimumValue={0}  maximumValue={100}  step={1}
-                      onValueChange={(newValue) => {onAttrChange('l', newValue)}}/>
-              <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.l}</Text>
-              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
-            
-            </View>
-            
+           
             <View style={styles.editorContainer}>
               <Text style={styles.editorText}>X</Text>
               <Slider style={styles.colorSlider}
@@ -119,7 +88,7 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={-10}  maximumValue={10}  step={1}
                       onValueChange={(newValue) => {console.log(activeCompType, newValue), onAttrChange('x', newValue)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.x}</Text>
-              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
+
       
             </View>
             <View style={styles.editorContainer}>
@@ -129,7 +98,7 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={-10}  maximumValue={10}  step={1}
                       onValueChange={(newValue) => {onAttrChange('y', newValue)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.y}</Text>
-              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
+
             
             </View>
 
@@ -140,7 +109,7 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={0.5}  maximumValue={2}  step={0.1}
                       onValueChange={(newValue) => {onAttrChange('scale', Math.round(newValue * 10) / 10)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.scale}</Text>
-              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
+
             
 
             </View>
@@ -152,7 +121,7 @@ export default function ComponentEditors({emojiComps, setEmoji, activeCompType, 
                       minimumValue={-180}  maximumValue={180}  step={1}
                       onValueChange={(newValue) => {onAttrChange('rotation', newValue)}}/>
               <Text style={styles.editorValueText}>{emojiComps[activeCompType].attr.rotation}</Text>
-              <TouchableOpacity style={styles.resetEditor}></TouchableOpacity>
+
             
             </View>
 

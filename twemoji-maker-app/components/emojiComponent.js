@@ -9,6 +9,7 @@ var emojiComps = emojiComps['emojiComps']
 
 var base = getNewEmojiComponent(emojiComps.base.key,  emojiComps.base.attr) ?? null
 var lefteye = getNewEmojiComponent(emojiComps.lefteye.key,  emojiComps.lefteye.attr) ?? null
+var righteye = getNewEmojiComponent(emojiComps.righteye.key,  emojiComps.righteye.attr) ?? null
 
 return (
 	// Using react-natives built in components.
@@ -16,6 +17,7 @@ return (
         <SVG height='156' width='156' viewBox='0 0 36 36'>
             {base}
             {lefteye}
+            {righteye}
         </SVG>
     </View>
 );

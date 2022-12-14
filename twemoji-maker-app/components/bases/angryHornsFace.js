@@ -2,10 +2,14 @@ import * as React from "react";
 import Svg, { Circle, Path, G,} from 'react-native-svg';
 
 function AngryHornsFace(props){
-    var h = props.h ?? '263'
-    var s = props.s ?? '48'
-    var l = props.l ?? '68'
+    //var h = props.h ?? '263'
+    //var s = props.s ?? '48'
+    //var l = props.l ?? '68'
+    var h = '263'
+    var s = '48'
+    var l = '68'
     var color1 = 'hsl('+h+','+s+'%,'+l+'%)'
+    console.log('test'+color1);
 
 return (
 	// Using react-natives built in components.

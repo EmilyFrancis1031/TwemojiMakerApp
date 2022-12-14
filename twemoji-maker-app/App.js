@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import BaseRadioButtons from './components/componentRadioButtons/baseRadioButtons';
 import LeftEyeRadioButtons from './components/componentRadioButtons/leftEyeRadioButtons';
+import RightEyeRadioButtons from './components/componentRadioButtons/rightEyeRadioButtons';
 import ComponentSelectors from './components/componentRadioButtons/componentSelectors';
 import ComponentEditors from './components/componentEditors';
 import Emoji from './components/emojiComponent';
@@ -24,7 +25,15 @@ export default function App() {
         scale: 1, rotation: 0,
         x: 0, y: 0, h: 41, s: 100, l: 20, 
       }
-    }})
+    },
+    righteye: {
+      key: 'neutral-right-eye',
+      attr: {
+        scale: 1, rotation: 0,
+        x: 0, y: 0, h: 41, s: 100, l: 20, 
+      }
+    }
+  })
 
     var [emoji, setEmoji] = useState(<Emoji emojiComps={emojiComps}/>)
   
@@ -40,9 +49,12 @@ export default function App() {
       { value: 'neutral-left-eye' },
       { value: 'pensive-left-eye' },
     ],
+    righteye: [
+      { value: 'neutral-right-eye' }
+    ]
 
   }
-  var compTypes = ['base','lefteye']
+  var compTypes = ['base','lefteye','righteye']
   const componentSelectors = [
     { value: 'base' },
     { value: 'lefteye' },
@@ -53,7 +65,9 @@ export default function App() {
     { value: 'mouth' },
   ];
   var compRadioButtons = [<BaseRadioButtons  initActive={emojiComps.base.key} data={comps['base']} onSelect={(value) => {emojiComps.base.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
-                          <LeftEyeRadioButtons initActive={emojiComps.lefteye.key} data={comps['lefteye']} onSelect={(value) => {emojiComps.lefteye.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />
+                          <LeftEyeRadioButtons initActive={emojiComps.lefteye.key} data={comps['lefteye']} onSelect={(value) => {emojiComps.lefteye.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
+                          <RightEyeRadioButtons initActive={emojiComps.righteye.key} data={comps['righteye']} onSelect={(value) => {emojiComps.righteye.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />
+                        
                         ]
   var [activeComponentType, setActiveComponentType] = useState('base')
   
@@ -67,7 +81,7 @@ export default function App() {
 
       <ComponentSelectors initActive={'base'} data={componentSelectors} onSelect={(value) => {setActiveComponentType(value)}} />
 
-      <ComponentEditors activeCompType={activeComponentType} emojiComps={emojiComps} setEmoji={setEmoji} setEmojiComps={setEmojiComps}/>
+
 
       <View style={styles.emojiComponentsContainer}>
         {compRadioButtons[compTypes.indexOf(activeComponentType)]}

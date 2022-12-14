@@ -1,5 +1,6 @@
 import * as BaseComponents from '../components/bases/baseComps'
 import * as LeftEyeComponents from '../components/leftEyes/leftEyeComps'
+import * as RightEyeComponents from '../components/rightEyes/rightEyeComps'
 
 export default function getNewEmojiComponent(compName, compProps){
     var newComponent = null;
@@ -23,6 +24,8 @@ export default function getNewEmojiComponent(compName, compProps){
       case 'neutral-left-eye': newComponent = <LeftEyeComponents.NeutralLeftEye type='left-eye' key='neutral-left-eye' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
       case 'pensive-left-eye': newComponent = <LeftEyeComponents.PensiveLeftEye type='left-eye' key='pensive-left-eye' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+        break;
+      case 'neutral-right-eye': newComponent = <RightEyeComponents.NeutralRightEye type='right-eye' key='neutral-right-eye' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
       default:  newComponent = null;
    }

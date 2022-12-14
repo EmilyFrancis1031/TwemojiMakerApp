@@ -3,9 +3,12 @@ import Svg, { Circle, Path, Rect, G, Ellipse} from 'react-native-svg';
 
 
 function AnxiousFace(props){
-    var h = props.h ?? '43'
-    var s = props.s ?? '100'
-    var l = props.l ?? '65'
+    //var h = props.h ?? '43'
+    //var s = props.s ?? '100'
+    //var l = props.l ?? '65'
+    var h = '43'
+    var s = '100'
+    var l = '65'
     var color1 = 'hsl('+h+','+s+'%,'+l+'%)'
     var color2 = props.color2 ?? 'rgb(189,221,244)';
 

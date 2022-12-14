@@ -2,9 +2,12 @@ import * as React from "react";
 import Svg, { Ellipse, G,} from 'react-native-svg';
 
 function NeutralLeftEye(props){
-    var h = props.h ?? '41'
-    var s = props.s ?? '100'
-    var l = props.l ?? '20'
+    //var h = props.h ?? '41'
+    //var s = props.s ?? '100'
+    //var l = props.l ?? '20'
+    var h = '41'
+    var s = '100'
+    var l = '20'
     var color1 = 'hsl('+h+','+s+'%,'+l+'%)'
 
 return (

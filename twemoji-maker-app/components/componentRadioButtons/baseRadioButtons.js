@@ -18,7 +18,7 @@ export default function BaseRadioButtons({ data, onSelect, initActive }) {
         break;
       case 'clown-face': newComponent = <ClownFace type='base' key='clown-face' scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
-      case 'angry-horns-face': newComponent = <AngryHornsFace type='base' key='angry-horns-face' color1={color1} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+      case 'angry-horns-face': newComponent = <AngryHornsFace type='base' key='angry-horns-face' scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
       default:  newComponent = null;
    }
