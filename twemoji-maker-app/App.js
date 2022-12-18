@@ -100,7 +100,7 @@ export default function App() {
     ]
 
   }
-  var compTypes = ['base','lefteye','righteye','lefteyebrow','righteyebrow','nose','mouth']
+  var compTypes = ['base','lefteye','righteye','lefteyebrow','righteyebrow','nose','mouth','lefthand','righthand','hat']
   const componentSelectors = [
     { value: 'base' },
     { value: 'lefteye' },
@@ -109,6 +109,9 @@ export default function App() {
     { value: 'righteyebrow' },
     { value: 'nose' },
     { value: 'mouth' },
+    { value: 'lefthand'},
+    { value: 'righthand'},
+    { value: 'hat'}
   ];
   var compRadioButtons = [<BaseRadioButtons  initActive={emojiComps.base.key} data={comps['base']} onSelect={(value) => {emojiComps.base.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
                           <LeftEyeRadioButtons initActive={emojiComps.lefteye.key} data={comps['lefteye']} onSelect={(value) => {emojiComps.lefteye.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
