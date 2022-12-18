@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dimensions, View,ScrollView, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native';
 import SVG from 'react-native-svg'
 import getNewEmojiComponent from '../../scripts/getNewEmojiComponent';
-export default function RightEyeRadioButtons({ data, onSelect, initActive }) {
+export default function RightEyebrowRadioButtons({ data, onSelect, initActive }) {
   const [userOption, setUserOption] = useState(initActive);
   const selectHandler = (value) => {
     onSelect(value);
@@ -12,12 +12,12 @@ export default function RightEyeRadioButtons({ data, onSelect, initActive }) {
   return (
     <ScrollView horizontal={true} style={{flexDirection:'row'}}>
       {data.map((item) => {
-        //console.log(item.value)
+        console.log(item.value)
         return (
           <TouchableOpacity key={item.value}
             style={item.value === userOption ? styles.selected : styles.unselected}
             onPress={() => selectHandler(item.value)}>
-            <SVG height='50' width='50' viewBox='0 0 36 36'>{getNewEmojiComponent(item.value, {h:'0',s:'0',l:'0'})}</SVG>
+            <SVG height='50' width='50' viewBox='0 0 36 36'>{getNewEmojiComponent(item.value, {})}</SVG>
             
 
           </TouchableOpacity>

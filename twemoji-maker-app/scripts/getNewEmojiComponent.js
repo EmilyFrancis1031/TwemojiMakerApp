@@ -1,6 +1,13 @@
 import * as BaseComponents from '../components/bases/baseComps'
 import * as LeftEyeComponents from '../components/leftEyes/leftEyeComps'
 import * as RightEyeComponents from '../components/rightEyes/rightEyeComps'
+import * as LeftEyebrowComponents from '../components/leftEyebrows/leftEyebrowComps'
+import * as RightEyebrowComponents from '../components/rightEyebrows/rightEyebrowComps'
+import * as NoseComponents from '../components/noses/noseComps'
+import * as MouthComponents from '../components/mouths/mouthComps'
+
+
+
 
 export default function getNewEmojiComponent(compName, compProps){
     var newComponent = null;
@@ -26,6 +33,16 @@ export default function getNewEmojiComponent(compName, compProps){
       case 'pensive-left-eye': newComponent = <LeftEyeComponents.PensiveLeftEye type='left-eye' key='pensive-left-eye' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
       case 'neutral-right-eye': newComponent = <RightEyeComponents.NeutralRightEye type='right-eye' key='neutral-right-eye' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+        break;
+      case 'pensive-right-eye': newComponent = <RightEyeComponents.PensiveRightEye type='right-eye' key='pensive-right-eye' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+        break;
+      case 'neutral-left-eyebrow': newComponent = <LeftEyebrowComponents.NeutralLeftEyebrow type='left-eyebrow' key='neutral-left-eyebrow' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+        break;
+      case 'neutral-right-eyebrow': newComponent = <RightEyebrowComponents.NeutralRightEyebrow type='right-eyebrow' key='neutral-right-eyebrow' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+        break;
+      case 'lying-nose': newComponent = <NoseComponents.LyingNose type='nose' key='lying-nose' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
+        break;
+      case 'small-smile': newComponent = <MouthComponents.SmallSmile type='mouth' key='small-smile' h={h} s={s} l={l} scaleProp={scale} xProp={x} yProp={y} rProp={rot}/>;
         break;
       default:  newComponent = null;
    }

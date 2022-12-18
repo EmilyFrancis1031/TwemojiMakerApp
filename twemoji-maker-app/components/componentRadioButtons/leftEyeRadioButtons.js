@@ -12,6 +12,7 @@ export default function LeftEyeRadioButtons({ data, onSelect, initActive }) {
   return (
     <ScrollView horizontal={true} style={{flexDirection:'row'}}>
       {data.map((item) => {
+        console.log("item: "+item.value)
         return (
           <TouchableOpacity key={item.value}
             style={item.value === userOption ? styles.selected : styles.unselected}

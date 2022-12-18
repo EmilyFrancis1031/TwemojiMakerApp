@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dimensions, View,ScrollView, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native';
 import SVG from 'react-native-svg'
 import getNewEmojiComponent from '../../scripts/getNewEmojiComponent';
-export default function RightEyeRadioButtons({ data, onSelect, initActive }) {
+export default function MouthRadioButtons({ data, onSelect, initActive }) {
   const [userOption, setUserOption] = useState(initActive);
   const selectHandler = (value) => {
     onSelect(value);

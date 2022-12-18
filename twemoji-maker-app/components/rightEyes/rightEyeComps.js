@@ -1,3 +1,4 @@
 import NeutralRightEye from './neutralRightEye';
+import PensiveRightEye from './pensiveRightEye';
 
-export {NeutralRightEye};
+export {NeutralRightEye, PensiveRightEye};

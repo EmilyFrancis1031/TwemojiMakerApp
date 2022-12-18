@@ -27,6 +27,7 @@ export default function BaseRadioButtons({ data, onSelect, initActive }) {
   return (
     <ScrollView horizontal={true}style={{flexDirection:'row'}}>
       {data.map((item) => {
+        //console.log(item.value)
         return (
           <TouchableOpacity key={item.value}
             style={item.value === userOption ? styles.selected : styles.unselected}
