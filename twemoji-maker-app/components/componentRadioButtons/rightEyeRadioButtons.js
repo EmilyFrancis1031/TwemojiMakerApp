@@ -10,7 +10,7 @@ export default function RightEyeRadioButtons({ data, onSelect, initActive }) {
   };
 
   return (
-    <ScrollView horizontal={true} style={{flexDirection:'row'}}>
+    <ScrollView contentContainerStyle={styles.container}>
       {data.map((item) => {
         //console.log(item.value)
         return (
@@ -28,12 +28,17 @@ export default function RightEyeRadioButtons({ data, onSelect, initActive }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    
+  },
         unselected: {
       borderColor: 'white',
       borderWidth: 2,
-      margin: 5,
-      padding: 10,
-      borderRadius: 10,
+      margin: Dimensions.get('window').height*0.01,
+      padding: Dimensions.get('window').height*0.01,
+      borderRadius: Dimensions.get('window').height*0.015,
       justifyContent: 'center',
       alignItems: 'center',
       width: Dimensions.get('window').height*0.1,
@@ -43,9 +48,9 @@ const styles = StyleSheet.create({
     selected: {
       borderColor: 'cornflowerblue',
       borderWidth: 2,
-      margin: 5,
-      padding: 10,
-      borderRadius: 10,
+      margin: Dimensions.get('window').height*0.01,
+      padding: Dimensions.get('window').height*0.01,
+      borderRadius: Dimensions.get('window').height*0.015,
       justifyContent: 'center',
       alignItems: 'center',
       width: Dimensions.get('window').height*0.1,

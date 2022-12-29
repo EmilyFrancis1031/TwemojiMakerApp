@@ -16,91 +16,131 @@ import Emoji from './components/emojiComponent';
 
 export default function App() {
 
-  var emojiComps =
+  var [emojiComps, setEmojiComps] = useState(
     {base: {
         key:'neutral-face',
-        attr: {
+        /*attr: {
           scale: 1, rotation: 0,
           x: 0, y: 0, h: 43, s: 100, l: 65, 
-        }
+        }*/
       },
     lefteye: {
       key: 'neutral-left-eye',
-      attr: {
+      /*attr: {
         scale: 1, rotation: 0,
         x: 0, y: 0, h: 41, s: 100, l: 20, 
-      }
+      }*/
     },
     righteye: {
       key: 'neutral-right-eye',
-      attr: {
+      /*attr: {
         scale: 1, rotation: 0,
         x: 0, y: 0, h: 41, s: 100, l: 20, 
-      }
+      }*/
     },
     lefteyebrow: {
       key: 'neutral-left-eyebrow',
-      attr: {
+      /*attr: {
         scale: 1, rotation: 0,
         x: 0, y: 0, h: 41, s: 100, l: 20, 
-      }
+      }*/
     },
     righteyebrow: {
       key: 'neutral-right-eyebrow',
-      attr: {
+      /*attr: {
         scale: 1, rotation: 0,
         x: 0, y: 0, h: 41, s: 100, l: 20, 
-      }
+      }*/
     },
     nose: {
       key: 'lying-nose',
-      attr: {
+      /*attr: {
         scale: 1, rotation: 0,
         x: 0, y: 0, h: 41, s: 100, l: 20, 
-      }
+      }*/
     },
     mouth: {
       key: 'small-smile',
-      attr: {
+      /*attr: {
         scale: 1, rotation: 0,
         x: 0, y: 0, h: 41, s: 100, l: 20, 
-      }
+      }*/
     }
+  })
+ 
+  function updateEmojiComps(newValue){
+    var tempEmojiComps = emojiComps
+    tempEmojiComps[activeComponentType].key = newValue
+    setEmojiComps(tempEmojiComps)
+    setEmoji(<Emoji emojiComps={emojiComps}/>)
+    //console.log(emojiComps)
   }
 
-    var [emoji, setEmoji] = useState(<Emoji emojiComps={emojiComps}/>)
+  var [emoji, setEmoji] = useState(<Emoji emojiComps={emojiComps}/>)
   
+
   const comps = {
     base: [
+      { value: 'none'},
       { value: 'neutral-face' },
       { value: 'anxious-face' },
+      { value: 'dotted-line-face'},
+      { value: 'exploding-head-face'},
+      { value: 'melting-face' },
+      { value: 'cat-face' },
       { value: 'clown-face' },
       { value: 'angry-horns-face' },
 
     ],
     lefteye: [
+      { value: 'none'},
       { value: 'neutral-left-eye' },
       { value: 'pensive-left-eye' },
+      { value: 'beaming-left-eye' },
+      { value: 'confounded-left-eye'},
+      { value: 'expressionless-left-eye'}
     ],
     righteye: [
+      { value: 'none'},
       { value: 'neutral-right-eye' },
       { value: 'pensive-right-eye' },
+      { value: 'beaming-right-eye' },
+      { value: 'confounded-right-eye'},
+      { value: 'expressionless-right-eye'}
+
     ],
     lefteyebrow:[
+      { value: 'none'},
       { value: 'neutral-left-eyebrow' }
     ],
     righteyebrow:[
+      { value: 'none'},
       { value: 'neutral-right-eyebrow' }
     ],
     nose:[
-      { value: 'lying-nose'}
+      { value: 'none'},
+      { value: 'lying-nose'},
+      { value: 'cat-nose'},
+      { value: 'clown-nose'},
+      { value: 'disguised-nose'}
     ],
     mouth:[
-      { value: 'small-smile'}
+      { value: 'none'},
+      { value: 'small-smile'},
+      { value: 'big-frown'},
+      { value: 'small-frown'},
+      { value: 'astonished-mouth'},
+      { value: 'beaming-smile'},
+      { value: 'confounded-mouth'},
+      { value: 'confused-mouth'},
+      { value: 'expressionless-mouth'},
+      { value: 'kiss-mouth'},
+      { value: 'gasping-mouth'},
+      { value: 'diagonal-mouth'}
     ]
 
   }
-  var compTypes = ['base','lefteye','righteye','lefteyebrow','righteyebrow','nose','mouth','lefthand','righthand','hat']
+  var compTypes = ['base','lefteye','righteye','lefteyebrow','righteyebrow','nose','mouth','lefthand','righthand','hat','glasses']
   const componentSelectors = [
     { value: 'base' },
     { value: 'lefteye' },
@@ -111,15 +151,16 @@ export default function App() {
     { value: 'mouth' },
     { value: 'lefthand'},
     { value: 'righthand'},
-    { value: 'hat'}
+    { value: 'hat'},
+    { value: 'glasses'}
   ];
-  var compRadioButtons = [<BaseRadioButtons  initActive={emojiComps.base.key} data={comps['base']} onSelect={(value) => {emojiComps.base.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
-                          <LeftEyeRadioButtons initActive={emojiComps.lefteye.key} data={comps['lefteye']} onSelect={(value) => {emojiComps.lefteye.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
-                          <RightEyeRadioButtons initActive={emojiComps.righteye.key} data={comps['righteye']} onSelect={(value) => {emojiComps.righteye.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
-                          <LeftEyebrowRadioButtons initActive={emojiComps.lefteyebrow.key} data={comps['lefteyebrow']} onSelect={(value) => {emojiComps.lefteyebrow.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
-                          <RightEyebrowRadioButtons initActive={emojiComps.righteyebrow.key} data={comps['righteyebrow']} onSelect={(value) => {emojiComps.righteyebrow.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
-                          <NoseRadioButtons initActive={emojiComps.nose.key} data={comps['nose']} onSelect={(value) => {emojiComps.nose.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />,
-                          <MouthRadioButtons initActive={emojiComps.mouth.key} data={comps['mouth']} onSelect={(value) => {emojiComps.mouth.key=value, setEmoji(<Emoji emojiComps={emojiComps}/>)}} />
+  var compRadioButtons = [<BaseRadioButtons  initActive={emojiComps.base.key} emojiComps={emojiComps} data={comps['base']} onSelect={(value) => {updateEmojiComps(value)}} />,
+                          <LeftEyeRadioButtons initActive={emojiComps.lefteye.key} emojiComps={emojiComps} data={comps['lefteye']} onSelect={(value) => {updateEmojiComps(value)}} />,
+                          <RightEyeRadioButtons initActive={emojiComps.righteye.key} emojiComps={emojiComps} data={comps['righteye']} onSelect={(value) => {updateEmojiComps(value)}} />,
+                          <LeftEyebrowRadioButtons initActive={emojiComps.lefteyebrow.key} emojiComps={emojiComps} data={comps['lefteyebrow']} onSelect={(value) => {updateEmojiComps(value)}} />,
+                          <RightEyebrowRadioButtons initActive={emojiComps.righteyebrow.key} emojiComps={emojiComps} data={comps['righteyebrow']} onSelect={(value) => {updateEmojiComps(value)}} />,
+                          <NoseRadioButtons initActive={emojiComps.nose.key} data={comps['nose']} emojiComps={emojiComps} onSelect={(value) => {updateEmojiComps(value)}} />,
+                          <MouthRadioButtons initActive={emojiComps.mouth.key} data={comps['mouth']} emojiComps={emojiComps} onSelect={(value) => {updateEmojiComps(value)}} />
                         
                         ]
   var [activeComponentType, setActiveComponentType] = useState('base')
@@ -133,9 +174,6 @@ export default function App() {
       </View>
 
       <ComponentSelectors initActive={'base'} data={componentSelectors} onSelect={(value) => {setActiveComponentType(value)}} />
-
-
-
       <View style={styles.emojiComponentsContainer}>
         {compRadioButtons[compTypes.indexOf(activeComponentType)]}
       </View>
@@ -158,6 +196,6 @@ const styles = StyleSheet.create({
   },
   emojiComponentsContainer:{
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height*0.25,
+    height: Dimensions.get('window').height*0.65,
   }
 });

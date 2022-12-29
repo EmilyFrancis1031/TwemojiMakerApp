@@ -4,11 +4,12 @@ import SVG, {G, Path, Ellipse} from 'react-native-svg'
 import { NeutralFace } from '../bases/baseComps';
 
 
-export default function ComponentSelectors({ data, onSelect, initActive }) {
+export default function ComponentSelectors({ data, onSelect, initActive, emojiComps }) {
   const [userOption, setUserOption] = useState(initActive);
   const selectHandler = (value) => {
     onSelect(value);
     setUserOption(value);
+    //console.log(emojiComps)
   };
   const getNewEditableEmojiComponent = (compKey) => {
     var newComponent = null;
@@ -72,6 +73,11 @@ export default function ComponentSelectors({ data, onSelect, initActive }) {
           <Path transform="translate(0,10)" fill="#664500" d="M11 6s2.074 2 7 2c4.927 0 7-2 7-2v2s-2.222 2-7 2c-4.778 0-7-2-7-2V6z"/>
           </G>
       break;
+      case 'glasses':
+        newComponent = <G>
+          <Path fill="#31373D" fill-rule="evenodd" d="M1.24 15.018c.24.239 1.438.957 1.677 1.675c.24.717.72 5.307 2.158 6.504c1.483 1.232 7.077.773 8.148.24c2.397-1.195 2.691-5.055 3.115-6.745c.239-.957 1.677-.957 1.677-.957s1.438 0 1.678.956c.424 1.691.72 5.562 3.115 6.755c1.072.535 6.666.994 8.151-.238c1.436-1.197 1.915-5.799 2.155-6.517c.238-.717 1.438-1.435 1.677-1.674c.241-.239.241-1.196 0-1.436c-.479-.478-6.134-.904-12.223-.239c-1.215.133-1.677.478-4.554.478c-2.875 0-3.339-.346-4.553-.478c-6.085-.664-11.741-.238-12.221.24c-.239.239-.239 1.197 0 1.436z" clip-rule="evenodd"/>
+        </G>
+      break;
       default:  newComponent = null;
    }
    return newComponent
@@ -80,7 +86,7 @@ export default function ComponentSelectors({ data, onSelect, initActive }) {
     <View style={styles.emojiComponentsSelectorsContainer}>
       <ScrollView horizontal={true} style={{flexDirection:'row', width: Dimensions.get('window').width}}>
         {data.map((item) => {
-          //console.log(item.value)
+          //console.log(userOption)
           return (
             <TouchableOpacity key={item.value}
               style={item.value === userOption ? styles.selected : styles.unselected}

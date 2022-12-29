@@ -23,13 +23,12 @@ return (
     <View style={styles.emojiView}>
         <SVG height='156' width='156' viewBox='0 0 36 36'>
             {base}
-            {lefteyebrow}
-            {lefteye}
-            {righteyebrow}
             {righteye}
-            {nose}
+            {righteyebrow}
             {mouth}
-            
+            {nose}
+            {lefteye}
+            {lefteyebrow}
         </SVG>
     </View>
 );

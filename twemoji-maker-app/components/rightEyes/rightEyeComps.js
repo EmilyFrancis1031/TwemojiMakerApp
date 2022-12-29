@@ -1,4 +1,11 @@
 import NeutralRightEye from './neutralRightEye';
 import PensiveRightEye from './pensiveRightEye';
+import BeamingRightEye from './beamingRightEye';
+import ConfoundedRightEye from './confoundedRightEye';
+import ExpressionlessRightEye from './expressionlessRightEye';
 
-export {NeutralRightEye, PensiveRightEye};
+export {BeamingRightEye,
+        ConfoundedRightEye,
+        ExpressionlessRightEye,
+        NeutralRightEye,
+        PensiveRightEye};

@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { Dimensions, View,ScrollView, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native';
 import SVG from 'react-native-svg'
 import getNewEmojiComponent from '../../scripts/getNewEmojiComponent';
-export default function LeftEyeRadioButtons({ data, onSelect, initActive }) {
+export default function LeftEyeRadioButtons({ data, onSelect, initActive, emojiComps }) {
   const [userOption, setUserOption] = useState(initActive);
   const selectHandler = (value) => {
     onSelect(value);
     setUserOption(value);
+    //emojiComps.lefteye.key = value;
+    //console.log(emojiComps);
   };
 
   return (
-    <ScrollView horizontal={true} style={{flexDirection:'row'}}>
+    <ScrollView contentContainerStyle={styles.container}>
       {data.map((item) => {
-        console.log("item: "+item.value)
+        //console.log("item: "+item.value)
         return (
           <TouchableOpacity key={item.value}
             style={item.value === userOption ? styles.selected : styles.unselected}
@@ -28,12 +30,17 @@ export default function LeftEyeRadioButtons({ data, onSelect, initActive }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  
+},
         unselected: {
       borderColor: 'white',
       borderWidth: 2,
-      margin: 5,
-      padding: 10,
-      borderRadius: 10,
+      margin: Dimensions.get('window').height*0.01,
+      padding: Dimensions.get('window').height*0.01,
+      borderRadius: Dimensions.get('window').height*0.015,
       justifyContent: 'center',
       alignItems: 'center',
       width: Dimensions.get('window').height*0.1,
@@ -43,9 +50,9 @@ const styles = StyleSheet.create({
     selected: {
       borderColor: 'cornflowerblue',
       borderWidth: 2,
-      margin: 5,
-      padding: 10,
-      borderRadius: 10,
+      margin: Dimensions.get('window').height*0.01,
+      padding: Dimensions.get('window').height*0.01,
+      borderRadius: Dimensions.get('window').height*0.015,
       justifyContent: 'center',
       alignItems: 'center',
       width: Dimensions.get('window').height*0.1,
